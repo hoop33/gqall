@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 
 const yargs = require("yargs");
+const client = require("./lib/client");
 
 yargs
   .usage(
@@ -17,7 +18,17 @@ yargs
       });
     },
     yargs => {
-      console.log(`running query ${yargs.url}`);
+      const c = new client(yargs.url, yargs.query);
+      c.setVerbose(yargs.verbose);
+      yargs.header &&
+        yargs.header.forEach(header => {
+          try {
+            c.addHeader(header);
+          } catch (err) {
+            console.log(err);
+          }
+        });
+      c.run();
     }
   )
   .alias("h", "help")
@@ -26,8 +37,12 @@ yargs
     alias: "verbose",
     default: false,
     type: "boolean",
-    describe: "verbose mode",
-    global: true
+    describe: "verbose mode"
+  })
+  .option("H", {
+    alias: "header",
+    type: "array",
+    describe: "HTTP header in key:value format"
   })
   .wrap(yargs.terminalWidth())
   .strict()
