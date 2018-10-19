@@ -65,3 +65,125 @@ test("addHeader should add header when properly formatted", () => {
   c.addHeader("foo:bar");
   expect(c.headers["foo"]).toBe("bar");
 });
+
+test("findTypeByName should return undefined when types is undefined", () => {
+  const c = new client();
+  expect(c._findTypeByName(undefined, "foo")).toBeUndefined();
+});
+
+test("findTypeByName should return undefined when types is null", () => {
+  const c = new client();
+  expect(c._findTypeByName(null, "foo")).toBeUndefined();
+});
+
+test("findTypeByName should return undefined when types is empty", () => {
+  const c = new client();
+  expect(c._findTypeByName([], "foo")).toBeUndefined();
+});
+
+test("findTypeByName should return undefined when type has no name", () => {
+  const c = new client();
+  expect(c._findTypeByName([{}], "foo")).toBeUndefined();
+});
+
+test("findTypeByName should return undefined when type is not found", () => {
+  const c = new client();
+  expect(
+    c._findTypeByName(
+      [
+        {
+          name: "bar"
+        }
+      ],
+      "foo"
+    )
+  ).toBeUndefined();
+});
+
+test("findTypeByName should return type when type is found", () => {
+  const c = new client();
+  expect(
+    c._findTypeByName(
+      [
+        {
+          name: "foo"
+        }
+      ],
+      "foo"
+    ).name
+  ).toBe("foo");
+});
+
+test("findTypeByName should return type and handle no-names when type is found", () => {
+  const c = new client();
+  expect(
+    c._findTypeByName(
+      [
+        {},
+        {
+          name: "foo"
+        }
+      ],
+      "foo"
+    ).name
+  ).toBe("foo");
+});
+
+test("findResponseType should return undefined when type is undefined", () => {
+  const c = new client();
+  expect(c._findResponseType()).toBeUndefined();
+});
+
+test("findResponseType should return undefined when type is null", () => {
+  const c = new client();
+  expect(c._findResponseType(null)).toBeUndefined();
+});
+
+test("findResponseType should return undefined when type is empty", () => {
+  const c = new client();
+  expect(c._findResponseType({})).toBeUndefined();
+});
+
+test("findResponseType should return undefined when type has no response type", () => {
+  const c = new client();
+  expect(
+    c._findResponseType({
+      ofType: {
+        ofType: {
+          ofType: {}
+        }
+      }
+    })
+  ).toBeUndefined();
+});
+
+test("findResponseType should return first name when type has name", () => {
+  const c = new client();
+  expect(
+    c._findResponseType({
+      name: "foo",
+      ofType: {
+        ofType: {
+          ofType: {
+            name: "bar"
+          }
+        }
+      }
+    })
+  ).toBe("foo");
+});
+
+test("findResponseType should return name when type has name", () => {
+  const c = new client();
+  expect(
+    c._findResponseType({
+      ofType: {
+        ofType: {
+          ofType: {
+            name: "bar"
+          }
+        }
+      }
+    })
+  ).toBe("bar");
+});
