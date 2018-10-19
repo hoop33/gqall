@@ -28,7 +28,11 @@ yargs
             console.log(err);
           }
         });
-      c.run();
+      c.run()
+        .then(() => {})
+        .catch(err => {
+          console.log(err);
+        });
     }
   )
   .alias("h", "help")
