@@ -2,15 +2,7 @@
 
 > A CLI for running a GraphQL query and requesting all fields
 
-[![oclif](https://img.shields.io/badge/cli-oclif-brightgreen.svg)](https://oclif.io)
-[![Version](https://img.shields.io/npm/v/gqall.svg)](https://npmjs.org/package/gqall)
-[![CircleCI](https://circleci.com/gh/hoop33/gqall/tree/master.svg?style=shield)](https://circleci.com/gh/hoop33/gqall/tree/master)
-[![Appveyor CI](https://ci.appveyor.com/api/projects/status/github/hoop33/gqall?branch=master&svg=true)](https://ci.appveyor.com/project/hoop33/gqall/branch/master)
-[![Codecov](https://codecov.io/gh/hoop33/gqall/branch/master/graph/badge.svg)](https://codecov.io/gh/hoop33/gqall)
-[![Downloads/week](https://img.shields.io/npm/dw/gqall.svg)](https://npmjs.org/package/gqall)
 [![License](https://img.shields.io/npm/l/gqall.svg)](https://github.com/hoop33/gqall/blob/master/package.json)
-
-<!-- toc -->
 
 ## Installation
 
