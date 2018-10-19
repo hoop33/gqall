@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 const yargs = require("yargs");
-const client = require("./lib/client");
+const Client = require("./lib/client");
 
 yargs
   .usage(
@@ -18,7 +18,7 @@ yargs
       });
     },
     yargs => {
-      const c = new client(yargs.url, yargs.query);
+      const c = new Client(yargs.url, yargs.query);
       c.setVerbose(yargs.verbose);
       yargs.header &&
         yargs.header.forEach(header => {
