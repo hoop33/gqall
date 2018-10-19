@@ -3,6 +3,9 @@
   "version": "0.1.0",
   "description": "A CLI for running a GraphQL query and requesting all fields",
   "main": "index.js",
+  "bin": {
+    "gqall": "./index.js"
+  },
   "scripts": {
     "posttest": "eslint .",
     "test": "jest"
