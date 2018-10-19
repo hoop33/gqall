@@ -29,7 +29,9 @@ yargs
           }
         });
       c.run()
-        .then(() => {})
+        .then(response => {
+          console.log(JSON.stringify(response, undefined, 2));
+        })
         .catch(err => {
           console.log(err);
         });
