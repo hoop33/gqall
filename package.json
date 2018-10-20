@@ -17,7 +17,11 @@
   "keywords": [
     "graphql"
   ],
-  "author": "Rob Warner",
+  "author": "Rob Warner <rwarner@grailbox.com> (https://grailbox.com)",
+  "contributors": [
+    "Robert McGuinness <rob.mcguinness@availity.com>",
+    "Tyson Warner <tysonwarner22@gmail.com>"
+  ],
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/hoop33/gqall/issues"
